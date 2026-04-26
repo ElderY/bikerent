@@ -7,7 +7,7 @@ Main Page
 
 {% block content %}
 <main>
-  <!-- Первый экран -->
+
   <section class="hero">
     <div class="hero-content">
       <span class="badge">Campus Bike Sharing</span>
@@ -17,7 +17,7 @@ Main Page
     </div>
   </section>
 
-  <!-- Сетка велосипедов -->
+
   <section class="catalog" id="bikes">
     <div class="section-header">
       <h2>Verfügbare Fahrräder</h2>
@@ -25,7 +25,7 @@ Main Page
     </div>
 
     <div class="bike-grid">
-      <!-- Карточка 1 -->
+
       <div class="bike-card">
         <div class="image-container">
           <img src="{{ url_for('static', filename = 'img/City Bike.jpg') }}" alt="City Bike">
@@ -40,7 +40,6 @@ Main Page
         </div>
       </div>
 
-      <!-- Карточка 2 -->
       <div class="bike-card">
         <div class="image-container">
           <img src="{{ url_for('static', filename = 'img/Trekking Bike.jpg') }}" alt="Mountain Bike">
@@ -55,7 +54,6 @@ Main Page
         </div>
       </div>
 
-      <!-- Карточка 3 -->
       <div class="bike-card">
         <div class="image-container">
           <img src="{{ url_for('static', filename = 'img/E-Bike.jpg') }}" alt="E-Bike">
@@ -72,7 +70,6 @@ Main Page
     </div>
   </section>
 
-  <!-- Инфо-блок: Как это работает -->
   <section class="how-it-works">
     <div class="info-card">
       <h3>So funktioniert's:</h3>
