@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Main Page
+{% endblock %}
+
+
+{% block content %}
+<main>
+  <!-- Первый экран -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">Campus Bike Sharing</span>
+      <h1>Mobilität für Studierende</h1>
+      <p>Kostenloser Verleih gegen Vorlage des Studierendenausweises.</p>
+      <button class="btn-primary" onclick="document.getElementById('bikes').scrollIntoView()">Fahrrad auswählen</button>
+    </div>
+  </section>
+
+  <!-- Сетка велосипедов -->
+  <section class="catalog" id="bikes">
+    <div class="section-header">
+      <h2>Verfügbare Fahrräder</h2>
+      <p>Alle Modelle sind gewartet und verkehrssicher (StVZO).</p>
+    </div>
+
+    <div class="bike-grid">
+      <!-- Карточка 1 -->
+      <div class="bike-card">
+        <div class="image-container">
+          <img src="{{ url_for('static', filename = 'img/City Bike.jpg') }}" alt="City Bike">
+          <span class="status-tag available">Verfügbar</span>
+        </div>
+        <div class="bike-info">
+          <h3>City Classic</h3>
+          <p>Bequem durch die Altstadt und zum Campus.</p>
+          <a href="{{ url_for('apply') }}">
+          <button class="btn-card">Jetzt reservieren</button>
+            </a>
+        </div>
+      </div>
+
+      <!-- Карточка 2 -->
+      <div class="bike-card">
+        <div class="image-container">
+          <img src="{{ url_for('static', filename = 'img/Trekking Bike.jpg') }}" alt="Mountain Bike">
+          <span class="status-tag available">Verfügbar</span>
+        </div>
+        <div class="bike-info">
+          <h3>Trekking Bike</h3>
+          <p>Für längere Strecken zwischen den Fakultäten.</p>
+          <a href="{{ url_for('apply') }}">
+          <button class="btn-card">Jetzt reservieren</button>
+            </a>
+        </div>
+      </div>
+
+      <!-- Карточка 3 -->
+      <div class="bike-card">
+        <div class="image-container">
+          <img src="{{ url_for('static', filename = 'img/E-Bike.jpg') }}" alt="E-Bike">
+          <span class="status-tag busy">Ausgeliehen</span>
+        </div>
+        <div class="bike-info">
+          <h3>E-Bikes (Test)</h3>
+          <p>Nur für Studierende mit Campus-Zulassung.</p>
+          <a href="{{ url_for('apply') }}">
+          <button class="btn-card" disabled>Jetzt reservieren</button>
+            </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Инфо-блок: Как это работает -->
+  <section class="how-it-works">
+    <div class="info-card">
+      <h3>So funktioniert's:</h3>
+      <ul>
+        <li><strong>1. Online wählen:</strong> Fahrrad aussuchen und reservieren.</li>
+        <li><strong>2. Vorzeigen:</strong> Gültiges Semesterticket bereithalten.</li>
+        <li><strong>3. Abholen:</strong> Am AStA-Container vorbeikommen.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+{% endblock %}

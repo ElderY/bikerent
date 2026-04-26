@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" class="form-control">
+    <input type="text" name="first_name" placeholder="First name" required class="form-control"><br>
+    <input type="text" name="last_name" placeholder="Last name" required class="form-control"><br>
+    <input type="email" name="email" placeholder="Email" required  class="form-control"><br>
+    <input type="number" name="phone_number" placeholder="Phone number" required  class="form-control"><br>
+    <input type="text" name="street_address" placeholder="Street address" required  class="form-control"><br>
+    <input type="number" name="postal_code" placeholder="Postal code" required  class="form-control"><br>
+    <input type="text" name="city" placeholder="City" required  class="form-control"><br>
+    <input type="text" name = "state" placeholder="State" required  class="form-control"><br>
+    <input type="text" name = "country" placeholder="Country" required  class="form-control"><br>
+    <input type="number" name = "matrikel" placeholder="Matrikelnummer" required  class="form-control"><br>
+    <label for="bike_model">Fahrradmodell auswählen</label>
+  <select id="bike_model" name="bike_model" required>
+    <option value="" disabled selected>Bitte wählen...</option>
+    <option value="city">City Classic</option>
+    <option value="trekking">Trekking Bike</option>
+    <option value="electric">E-Bike (Campus Only)</option>
+  </select>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

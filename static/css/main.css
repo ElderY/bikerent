@@ -1,0 +1,215 @@
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    padding: 15px;
+    z-index: 1000;
+    background: #fff;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* PAGE */
+
+.page {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* CONTENT */
+.content {
+    max-width: 100vh;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1 1 auto;
+}
+
+:root {
+  --accent-color: #005293;
+  --text-main: #1a1a1a;
+  --bg-light: #f5f5f7;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Hero блок */
+.hero {
+  text-align: left;
+  padding: 100px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 80px;
+}
+
+.badge {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin: 15px 0;
+  letter-spacing: -1px;
+}
+
+.btn-primary {
+  background: var(--text-main);
+  color: #fff;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-color);
+}
+
+/* Карточки */
+.bike-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.bike-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.bike-card:hover {
+  transform: translateY(-5px);
+}
+
+.image-container {
+  position: relative;
+}
+
+.status-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  background: #fff;
+}
+
+.available { color: #27ae60; }
+.busy { color: #eb5757; }
+
+.bike-info { padding: 25px; }
+
+.btn-card {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-card:hover:not(:disabled) {
+  border-color: var(--text-main);
+}
+
+.btn-card:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Инфо-блок */
+.how-it-works {
+  margin-top: 100px;
+  background: var(--bg-light);
+  padding: 40px;
+  border-radius: 12px;
+}
+
+.how-it-works ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+select {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://w3.org' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 1em;
+}
+
+select:focus {
+  border-color: #005293;
+}
+
+body {
+
+    background-image: url('/static/img/freberg.jpg');
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    background-position: center;
+}
+
+/* Основной контентный блок */
+main {
+    background: rgba(255, 255, 255, 0.9); /* Белый фон с 90% непрозрачностью */
+    backdrop-filter: blur(10px); /* Эффект матового стекла */
+    border-radius: 15px;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 1100px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Возвращаем фон футеру */
+footer {
+    background-color: #fff !important;
+}
+
