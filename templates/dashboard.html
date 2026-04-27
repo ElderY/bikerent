@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>BikeRent Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> <!-- Подключим CSS ниже -->
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Левая панель -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>Campus<span>Bikes</span></h2>
+            </div>
+            <nav class="menu">
+                <a href="#" class="menu-item active">Dashboard</a>
+                <a href="#" class="menu-item">Inventory</a>
+                <a href="#" class="menu-item">Students</a>
+            </nav>
+        </aside>
+
+        <!-- Основная область -->
+        <main class="main-area">
+            <!-- Верхняя панель -->
+            <header class="top-header">
+                <h1>Verwaltung Übersicht</h1>
+                <div class="user-profile">Admin Mode</div>
+            </header>
+
+            <!-- Карточки статистики -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total Bikes</span>
+                    <span class="stat-value">{{total}}</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Available</span>
+                    <span class="stat-value green">{{free}}</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Pending Requests</span>
+                    <span class="stat-value orange">{{pending}}</span>
+                </div>
+            </div>
+
+            <!-- Таблица заявок -->
+            <section class="data-section">
+                <h3>Eingehende Anträge</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Matrikelnummer</th>
+                            <th>Modell</th>
+                            <th>Aktion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Max Mustermann</td>
+                            <td>74829</td>
+                            <td>City Bike</td>
+                            <td><button class="btn-action">Ausleihen</button></td>
+                        </tr>
+                        <tr>
+                            <td>Anna Schmidt</td>
+                            <td>85930</td>
+                            <td>Trekking Bike</td>
+                            <td><button class="btn-action">Ausleihen</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -213,3 +213,121 @@ footer {
     background-color: #fff !important;
 }
 
+/* DASHBOARD */
+
+:root {
+    --primary: #005293; /* Тот самый синий */
+    --bg: #f8f9fa;
+    --sidebar: #ffffff;
+    --text: #2d3436;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar);
+    border-right: 1px solid #e0e0e0;
+    padding: 30px 20px;
+}
+
+.brand h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.brand span { color: #2ecc71; }
+
+.menu { margin-top: 50px; }
+
+.menu-item {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #636e72;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.menu-item.active, .menu-item:hover {
+    background: #e9ecef;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Main Content */
+.main-area {
+    flex: 1;
+    padding: 40px;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* Stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.stat-label { font-size: 0.9rem; color: #b2bec3; display: block; }
+.stat-value { font-size: 1.8rem; font-weight: bold; margin-top: 5px; display: block; }
+.green { color: #2ecc71; }
+.orange { color: #fdcb6e; }
+
+/* Tables */
+.data-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.styled-table th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #eee;
+    color: #b2bec3;
+}
+
+.styled-table td { padding: 15px 12px; border-bottom: 1px solid #eee; }
+
+.btn-action {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
