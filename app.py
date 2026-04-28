@@ -51,7 +51,7 @@ class Inventory(db.Model):
     model_name: Mapped[str] = mapped_column(db.String(100), nullable=False)
     frame_number: Mapped[int] = mapped_column(db.String(100), nullable=False)
     status: Mapped[str] = mapped_column(db.String(100), nullable=False, default='available')
-    condition: Mapped[str] = mapped_column(db.String(100), nullable=False)
+    condition: Mapped[str] = mapped_column(db.String(100), nullable=False, default='new')
 
     rentals: Mapped[list["Rentals"]] = relationship(back_populates="bike")
 
@@ -138,7 +138,7 @@ def approve_request(req_id):
 
     try:
         new_rental = Rentals(bike=bike, student_request=request_to_approve)
-        bike.status = 'BUSY'
+        bike.status = 'busy'
         request_to_approve.status = 'APPROVED'
         db.session.add(new_rental)
         db.session.commit()
