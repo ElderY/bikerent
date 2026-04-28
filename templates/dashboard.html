@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>BikeRent Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> <!-- Подключим CSS ниже -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
     <div class="app-wrapper">
@@ -43,34 +43,57 @@
                 </div>
             </div>
 
-            <!-- Таблица заявок -->
-            <section class="data-section">
-                <h3>Eingehende Anträge</h3>
-                <table class="styled-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Matrikelnummer</th>
-                            <th>Modell</th>
-                            <th>Aktion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Max Mustermann</td>
-                            <td>74829</td>
-                            <td>City Bike</td>
-                            <td><button class="btn-action">Ausleihen</button></td>
-                        </tr>
-                        <tr>
-                            <td>Anna Schmidt</td>
-                            <td>85930</td>
-                            <td>Trekking Bike</td>
-                            <td><button class="btn-action">Ausleihen</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+<section class="data-section">
+    <div class="section-header">
+        <h3>Eingehende Anträge</h3>
+        <span class="count-badge">{{ pending }} Anträge offen</span>
+    </div>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Antragsteller</th>
+                <th>Matrikelnummer</th>
+                <th>Gewünschtes Modell</th>
+                <th>E-Mail-Adresse</th>
+                <th>Status / Aktion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for req in requests %}
+                {% if req.status == "PENDING" %}
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <strong>{{ req.last_name }}, {{ req.first_name }}</strong>
+                        </div>
+                    </td>
+                    <td><code class="matrikel-code">{{ req.matrikel }}</code></td>
+                    <td>
+                        <span class="model-tag">{{ req.bike_model }}</span>
+                    </td>
+                    <td><a href="mailto:{{ req.email }}" class="email-link">{{ req.email }}</a></td>
+                    <td>
+
+                        <a href="{{ url_for('approve_request', req_id=req.id) }}" class="btn-approve">
+                            Fahrrad ausgeben
+                        </a>
+                    </td>
+                </tr>
+                {% endif %}
+                {% else %}
+
+                <tr>
+                    <td colspan="5" class="empty-state">
+                        Keine neuen Anträge vorhanden.
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
         </main>
     </div>
 </body>

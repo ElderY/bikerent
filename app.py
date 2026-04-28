@@ -8,10 +8,23 @@ from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import relationship
 from typing import List
+import random
 
-# from app import app,db
+
+# from app import app,db, Post, Inventory, Rentals
 # app.app_context().push()
 # db.create_all()
+# import random
+# i = 0
+# while i < 25:
+#     bike = Inventory(model_name='CityClassic', frame_number=random.randint(1000, 5000), status = 'available', condition='new')
+#     db.session.add(bike)
+#     i += 1
+# db.session.commit()
+
+
+
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bikerent.db'
@@ -23,7 +36,8 @@ class Rentals(db.Model):
     __tablename__ = 'rentals'
     rental_id: Mapped[int] = mapped_column(db.Integer, primary_key=True, autoincrement=True)
     bike_id: Mapped[int] = mapped_column(ForeignKey('inventory.id'), nullable=False)
-    student_id: Mapped[int] = mapped_column(ForeignKey('requests.id'), nullable=False)
+    student_id: Mapped[int] = mapped_column(ForeignKey('requests.id'), nullable=False, unique=True)
+
     start_date: Mapped[int] = mapped_column(default=func.now())
     end_date: Mapped[int] = mapped_column(nullable=True)
 
@@ -55,7 +69,7 @@ class Post(db.Model):
     city: Mapped[str] = mapped_column(db.String(100), nullable=False)
     state: Mapped[str] = mapped_column(db.String(100), nullable=False)
     country: Mapped[str] = mapped_column(db.String(100), nullable=False)
-    matrikel: Mapped[int] = mapped_column(nullable=False)
+    matrikel: Mapped[int] = mapped_column(nullable=False, unique=True)
     bike_model: Mapped[str] = mapped_column(db.String(100), nullable=False)
 
     rentals: Mapped[list["Rentals"]] = relationship(back_populates="student_request")
@@ -113,6 +127,30 @@ def dashboard():
                            total=total,
                            free=free
                            )
+
+@app.route('/approve_request/<int:req_id>')
+def approve_request(req_id):
+    request_to_approve = Post.query.get_or_404(req_id)
+    bike = Inventory.query.filter_by(model_name=request_to_approve.bike_model, status='available').first()
+
+    if not bike:
+        return "Error: Keine verfügbaren Fahrräder dieses Modells!", 400
+
+    try:
+        new_rental = Rentals(bike=bike, student_request=request_to_approve)
+        bike.status = 'BUSY'
+        request_to_approve.status = 'APPROVED'
+        db.session.add(new_rental)
+        db.session.commit()
+        db.session.close()
+        return redirect('/dashboard')
+
+    except Exception as e:
+        db.session.rollback()
+        return f"Datenbankfehler: {str(e)}", 500
+
+    else:
+        return render_template('dashboard.html')
 
 
 if __name__ == '__main__':
