@@ -11,22 +11,33 @@
 </head>
 <body>
 <div class="page">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <div class="col-md-3 mb-2 mb-md-0">
-            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-            <img class = "header__img" src="{{ url_for('static', filename = 'img/kopfzeile_tubaf.jpg') }}" alt="law">
-            </a>
-        </div>
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{{ url_for('index') }}" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="{{ url_for('about') }}" class="nav-link px-2">About</a></li>
-        </ul>
-        <div class="col-md-3 text-end">
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+            <img class="header__img" src="{{ url_for('static', filename='img/kopfzeile_tubaf.jpg') }}" alt="TUBAF Logo" style="height: 40px;">
+        </a>
+    </div>
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{{ url_for('index') }}" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="#" class="nav-link px-2 text-dark">Fakultäten</a></li>
+        <li><a href="#" class="nav-link px-2 text-dark">Campus-Life</a></li>
+        <li><a href="#" class="nav-link px-2 text-dark">Service</a></li>
+        <li><a href="{{ url_for('about') }}" class="nav-link px-2 text-dark">Kontakt</a></li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+        <div class="d-flex justify-content-end align-items-center gap-2">
+            <a href="#" class="text-decoration-none text-muted me-2" style="font-size: 0.9rem;">DE | EN</a>
+
+            <a href="/login" class="btn btn-outline-primary btn-sm">Login</a>
+
             <a href="{{ url_for('apply') }}">
-            <button type="button" class="btn btn-primary">Jetzt reservieren</button>
+                <button type="button" class="btn btn-primary">Jetzt reservieren</button>
             </a>
         </div>
-    </header>
+    </div>
+</header>
+
     <div class="content">
         {% block content %}{% endblock %}
     </div>
